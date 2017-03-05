@@ -21,6 +21,10 @@
 @media (max-width: 760px) {
 	.cards .card {
 		width: 48%;
+		margin-right: 4%;
+	}
+
+	.cards .card:nth-child(2n+2) {
 		margin-right: 0;
 	}
 }
