@@ -1,22 +1,33 @@
+.form-filters {
+	margin: 20px 0;
+}
+
 .cards {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: flex-start;
 }
 
 .cards .card {
 	width: 23%;
+	margin-right: 2%;
+}
+
+.cards .card:nth-child(4n+4) {
+	margin-right: 0;
 }
 
 @media (max-width: 760px) {
 	.cards .card {
 		width: 48%;
+		margin-right: 0;
 	}
 }
 
 @media (max-width: 480px) {
 	.cards .card {
 		width: 100%;
+		margin-right: 0;
 	}
 }
