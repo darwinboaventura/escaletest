@@ -14,15 +14,56 @@
 
 	<body ng-controller="starsControllers">
 		<div class="container">
-			<div class="col-sm-6 col-md-3" ng-repeat="card in cards">
-				<div class="thumbnail">
-					<img ng-src="{{card.owner.avatar_url}}" class="img-responsive">
+			<div class="row">
+				<div class="col-md-12">
+					<form class="form-inline">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Filtrar por linguagem</label>
+
+									<select class="form-control">
+										<option ng-repeat="card in cards | unique: 'language'" ng-show="card.language" ng-model="languageFilter">{{card.language}}</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="pull-right">
+								<label>Ordenar por</label>
+
+								<select class="form-control">
+									<option ng-repeat="card in cards | unique: 'language'" ng-show="card.language" ng-model="languageFilter">{{card.language}}</option>
+								</select>
+							</div>
+						</div>
+					</form>
 				</div>
+			</div>
 
-				<div class="caption">
-					<h3>{{card.name}}</h3>
+			<div class="row">
+				<div class="col-sm-6 col-md-3" ng-repeat="card in cards">
+					<div class="thumbnail">
+						<img ng-src="{{card.owner.avatar_url}}" class="img-responsive">
+					</div>
 
-					<p>{{card.description}}</p>
+					<div class="caption">
+						<h3>{{card.name}}</h3>
+
+						<p>
+							{{card.description}} <br />
+							{{card.language}}
+						</p>
+
+						<p>
+							{{card.stargazers_count}} <br />
+							{{card.open_issues}}
+						</p>
+
+						<p>
+							{{card.created_at}} <br />
+							{{card.pushed_at}}
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -33,6 +74,7 @@
 
 		<!-- modules -->
 		<script src="js/app.js"></script>
+		<script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
 		<!-- modules -->
 
 		<!-- services -->
