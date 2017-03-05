@@ -22,7 +22,7 @@
 								<div class="form-group">
 									<label>Filtrar por linguagem</label>
 
-									<select class="form-control" ng-model="languageFilter">
+									<select class="form-control" ng-model="languageFilter" ng-change="clearOrderFilter()">
 										<option value="">Todos</option>
 
 										<option ng-repeat="card in cards | unique: 'language'" ng-show="card.language" ng-value="card.language">{{card.language}}</option>
@@ -58,18 +58,15 @@
 						<h3>{{card.name}}</h3>
 
 						<p>
-							{{card.description}} <br />
-							{{card.language}}
+							{{card.description}}
 						</p>
 
 						<p>
-							{{card.stargazers_count}} <br />
-							{{card.open_issues}}
-						</p>
-
-						<p>
-							{{card.created_at}} <br />
-							{{card.pushed_at}}
+							<strong>Language: </strong> {{card.language}} <br />
+							<strong>Stars: </strong> {{card.stargazers_count}} <br />
+							<strong>Open issues: </strong> {{card.open_issues}} <br />
+							<strong>Created at: </strong>{{card.created_at | date: 'dd-MM-yyyy'}} <br />
+							<strong>Pushed at: </strong> {{card.pushed_at | date: 'dd-MM-yyyy'}}
 						</p>
 					</div>
 				</div>
