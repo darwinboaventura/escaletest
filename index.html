@@ -14,16 +14,30 @@
 
 	<body ng-controller="starsControllers">
 		<div class="container">
-			<h1>Darwin Boaventura</h1>
+			<div class="col-sm-6 col-md-3" ng-repeat="card in cards">
+				<div class="thumbnail">
+					<img ng-src="{{card.owner.avatar_url}}" class="img-responsive">
+				</div>
+
+				<div class="caption">
+					<h3>{{card.name}}</h3>
+
+					<p>{{card.description}}</p>
+				</div>
+			</div>
 		</div>
 
 		<!-- lib angular -->
-		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
 		<!-- lib angular -->
 
 		<!-- modules -->
 		<script src="js/app.js"></script>
 		<!-- modules -->
+
+		<!-- services -->
+		<script src="js/services/githubService.js"></script>
+		<!-- services -->
 
 		<!-- controllers -->
 		<script src="js/controllers/starsControllers.js"></script>
