@@ -22,8 +22,10 @@
 								<div class="form-group">
 									<label>Filtrar por linguagem</label>
 
-									<select class="form-control">
-										<option ng-repeat="card in cards | unique: 'language'" ng-show="card.language" ng-model="languageFilter">{{card.language}}</option>
+									<select class="form-control" ng-model="languageFilter">
+										<option value="">Todos</option>
+
+										<option ng-repeat="card in cards | unique: 'language'" ng-show="card.language" ng-value="card.language">{{card.language}}</option>
 									</select>
 								</div>
 							</div>
@@ -31,8 +33,14 @@
 							<div class="pull-right">
 								<label>Ordenar por</label>
 
-								<select class="form-control">
-									<option ng-repeat="card in cards | unique: 'language'" ng-show="card.language" ng-model="languageFilter">{{card.language}}</option>
+								<select class="form-control" ng-model="orderFilter">
+									<option ng-value="">Aleatório</option>
+									<option ng-value="'name'">Alfabética (A-Z)</option>
+									<option ng-value="'-name'">Alfabética (Z-A)</option>
+									<option ng-value="'stargazers_count'">Quantidade starts (1-9)</option>
+									<option ng-value="'-stargazers_count'">Quantidade starts (9-1)</option>
+									<option ng-value="'open_issues'">Quantidade open issues (1-9)</option>
+									<option ng-value="'-open_issues'">Quantidade open issues (9-1)</option>
 								</select>
 							</div>
 						</div>
@@ -41,7 +49,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-sm-6 col-md-3" ng-repeat="card in cards">
+				<div class="col-sm-6 col-md-3" ng-repeat="card in cards | filterBy: ['language'] : languageFilter | orderBy: orderFilter">
 					<div class="thumbnail">
 						<img ng-src="{{card.owner.avatar_url}}" class="img-responsive">
 					</div>
